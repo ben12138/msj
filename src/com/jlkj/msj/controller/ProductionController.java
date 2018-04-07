@@ -41,7 +41,7 @@ public class ProductionController {
      * @param production
      * @return
      */
-    @RequestMapping(value="/addProduction.do/{userId}",produces = {"application/json; charset=utf-8" })
+    @RequestMapping(value="/addProduction{userId}",produces = {"application/json; charset=utf-8" })
     @ResponseBody
     public Result<Boolean> addProduction(Production production,@PathVariable("userId") String userId,@RequestParam("year")int year, @RequestParam("month")int month, @RequestParam("day")int day){
         UserInformation userInformation = new UserInformation();
