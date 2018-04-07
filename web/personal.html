@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美食家</title>
+    <link rel="stylesheet" type="text/css" href="css3/personal.css">
+    <script src="jQuery/jquery-1.8.3.min.js"></script>
+    <script src="js/personal.js"></script>
+</head>
+<body>
+
+<div class="header" id="top">
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.png"></a>
+    </div>
+    <div class="headimagediv">
+        <img id="headimage" src="images/default_personal_image.png" class="headimage"/>
+    </div>
+</div>
+<div class="registerbody">
+    <div class="content">
+        <div class="title">
+            <div class="set">
+                资料设置
+            </div>
+        </div>
+        <div class="tip">
+            完善个人资料是让别人认识你的第一步
+        </div>
+        <div class="mark">
+            基本信息
+        </div>
+        <div class="nickname">
+            <b style="color: red">*</b>
+            <label>昵称</label>
+            <input type="text" id="nickname"/>
+            <div class="nicknameerror" id="nicknameerror">
+
+            </div>
+        </div>
+        <div class="changeheadimage">
+            <label>&nbsp;&nbsp;头像</label>
+            <img class="showimage" id="showimage" src="images/default_personal_image.png">
+            <div class="upload">
+                <div style="display: inline;">
+                    <div class="changeheadimagebutton" style="display: inline;" onclick="javascript:$('#headimageurl').click()" onchange="javascript:$('#headimageurl').change()">
+                        修改头像
+                    </div>
+                    <br>
+                    <div class="tip" style="margin-left: 5%;margin-top: 1%;">支持jpg、gif、png或bmp格式的图片，建议文件小于20M</div>
+
+                    <!--<button onclick="javascript:$('#headimageurl').click()">aaa</button>-->
+                </div>
+                <input type="file" multiple="multiple" id="headimageurl" class="headimageurl" value="更换头像" accept="image/*" />
+            </div>
+        </div>
+        <div class="sex">
+            <label>&nbsp;&nbsp;性别</label>
+            <input type="radio" name="sex" value="0" checked style="width: 3%;"/>男
+            <input type="radio" name="sex" value="1" style="width: 3%;"/>女
+        </div>
+        <div class="introduction">
+            <label>&nbsp;&nbsp;简介</label>
+            <textarea id="introduction" class="introductiontext" placeholder="用一段话来介绍你自己，会在你的个人页面显示"></textarea>
+        </div>
+        <div class="mark">
+            联系信息
+        </div>
+        <div class="birthday">
+            <b style="color: red">*</b>
+            <label>生日</label>
+            <input type="date" id="birthday" max="2017-12-01"/><br>
+        </div>
+        <div class="phoneNum">
+            <label>&nbsp;&nbsp;电话</label>
+            <input type="text" id="phone_num" readonly style="display: inline;padding-left: 10px;" />
+            <div class="addPhoneNum" style="display: inline;" id="addPhoneNumButton">
+                添加
+            </div>
+        </div>
+        <div class="email">
+            <label>&nbsp;&nbsp;邮箱</label><input type="text" id="email" readonly style="padding-left: 10px;"/>
+        </div>
+        <div class="company">
+            <label>&nbsp;&nbsp;公司</label>
+            <input type="text" id="company"/>
+        </div>
+        <div class="bottomButton">
+            <button id="post" class="postButton">提交</button>
+            <button id="next" class="nextButton">跳过这一步</button>
+        </div>
+        <input type="text" readonly value="111" id="id" hidden/>
+        <input type="text" id="state" hidden/>
+        <input type="text" id="authority" hidden/>
+    </div>
+</div>
+<div class="footer">
+    <p class="totop" style="padding-top: 10px;">回到页顶</p>
+    <hr>
+    <p>电话:13151567657 邮箱:m13814545863@163.com 地址:江苏省南京市江宁区弘景大道99号金陵科技学院</p>
+    <p style="padding-bottom: 10px;">贲睿 1412102036</p>
+</div>
+<div class="totop" id="totop">
+</div>
+</body>
+</html>

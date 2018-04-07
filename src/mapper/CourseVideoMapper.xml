@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.CourseVideoDao">
+
+    <resultMap id="courseVideo" type="com.jlkj.msj.entity.CourseVideo">
+        <result column="course_video_id" property="courseVideoId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="course_video_name" property="courseVideoName"/>
+        <result column="video" property="video"/>
+    </resultMap>
+
+    <select id="getCourseVideos" resultMap="courseVideo">
+        SELECT
+        course_video_id,
+        course_id,
+        course_video_name,
+        video
+        FROM
+        course_video
+        WHERE course_id = #{courseId}
+    </select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.MyCollectionDao">
+    <resultMap id="myCollection" type="com.jlkj.msj.entity.MyCollection">
+        <id column="id" property="id"/>
+        <result column="collection_id" property="collectionId"/>
+        <result column="user_id" property="userId"/>
+        <result column="content_id" property="contentId"/>
+        <result column="type" property="type"/>
+    </resultMap>
+    <select id="getCollections" resultMap="myCollection">
+        SELECT
+        id,
+        collection_id,
+        user_id,
+        content_id,
+        type
+        FROM
+        collection
+        WHERE
+        user_id = #{userId}
+        AND
+        type = #{type}
+    </select>
+    <insert id="addCollection" parameterType="myCollection">
+        INSERT INTO collection(
+          collection_id,
+          user_id,
+          content_id,
+          type
+        )VALUES (
+          #{collection.collectionId},
+          #{collection.userId},
+          #{collection.contentId},
+          #{collection.type}
+        )
+    </insert>
+    <delete id="deleteCollection">
+        DELETE FROM collection WHERE user_id = #{userId} AND content_id=#{contentId} AND type = #{type}
+    </delete>
+    <select id="isCollected" resultMap="myCollection">
+        SELECT
+        id,
+        collection_id,
+        user_id,
+        content_id,
+        type
+        FROM
+        collection
+        WHERE
+        user_id = #{userId}
+        AND
+        type = #{type}
+        AND
+        content_id = #{contentId}
+    </select>
+</mapper>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css3/login.css">
+    <link rel="stylesheet" type="text/css" href="css3/register.css">
+    <script src="jQuery/jquery-1.8.3.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="logininf">
+    <div class="title">
+        <img class="close" src="images/close.png">
+    </div>
+    <div class="caption">
+        注册
+    </div>
+    <div class="registerbody">
+        <input type="text" placeholder="邮箱" class="username" id="username"/>
+        <div id="usernameerror" style="color: red;visibility: visible;">&nbsp;&nbsp;&nbsp;</div>
+        <input type="password" placeholder="密码" class="username" id="password"/>
+        <div id="passworderror" style="color: red;visibility: visible;">&nbsp;&nbsp;&nbsp;</div>
+        <input type="password" placeholder="再次输入密码" class="username" id="confpassword"/>
+        <div id="confpassworderror" style="color: red;visibility: visible;">&nbsp;&nbsp;&nbsp;</div>
+        <div class="vertifybody">
+            <input type="test" placeholder="验证码获取" class="vertification" id="vertification" readonly/>
+            <div class="registerlogin" id="vertify">
+                验证
+            </div>
+        </div>
+        <div id="vertifyerror" style="color: red;visibility: visible;">&nbsp;&nbsp;&nbsp;</div>
+    </div>
+    <div class="registerbutton">
+        <div class="registerlogin" id="registerlogin">
+            注册
+        </div>
+    </div>
+</div>
+</body>
+</html>

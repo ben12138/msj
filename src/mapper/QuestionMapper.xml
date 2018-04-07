@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.QuestionDao">
+    <resultMap id="question" type="com.jlkj.msj.entity.Question">
+        <id column="id" property="id"/>
+        <result column="question_id" property="questionId"/>
+        <result column="question_content" property="questionContent"/>
+        <result column="send_time" property="sendTime"/>
+        <association property="userInformation" javaType="com.jlkj.msj.entity.UserInformation">
+            <id column="user_id" property="userId"></id>
+            <result column="nickname" property="nickName"></result>
+            <result column="sex" property="sex"></result>
+            <result column="headimage" property="headImage"></result>
+            <result column="phone_num" property="phoneNum"></result>
+            <result column="email" property="email"></result>
+            <result column="birthday" property="birthday" javaType="java.sql.Date"></result>
+            <result column="company" property="company"></result>
+            <result column="introduction" property="introduction"></result>
+            <result column="state" property="state"></result>
+            <result column="authority_id" property="authorityId"></result>
+        </association>
+    </resultMap>
+
+    <insert id="addQuestion" parameterType="question">
+        INSERT INTO question(
+          question_id,
+          user_id,
+          question_content,
+          send_time
+        )VALUES (
+          #{question.questionId},
+          #{userId},
+          #{question.questionContent},
+          #{question.sendTime}
+        )
+    </insert>
+
+    <delete id="deleteQuestion" parameterType="String">
+        DELETE FROM question WHERE question_id = #{questionId}
+    </delete>
+
+    <select id="getQuestions" resultMap="question">
+        SELECT
+        q.id id,
+        q.question_id question_id,
+        q.question_content question_content,
+        q.send_time send_time,
+        u.user_id user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id
+        FROM
+        question q,
+        user_information u
+        WHERE
+        q.user_id = u.user_id
+        ORDER BY
+        q.send_time DESC
+    </select>
+
+    <select id="getMyQuestions" resultMap="question">
+        SELECT
+        q.id id,
+        q.question_id question_id,
+        q.question_content question_content,
+        q.send_time send_time,
+        u.user_id user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id
+        FROM
+        question q,
+        user_information u
+        WHERE
+        q.user_id = u.user_id
+        AND
+        u.user_id=#{userId}
+        ORDER BY
+        q.send_time DESC
+    </select>
+
+    <select id="getQuestionsByKeyWord" resultMap="question">
+        SELECT
+        q.id id,
+        q.question_id question_id,
+        q.question_content question_content,
+        q.send_time send_time,
+        u.user_id user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id
+        FROM
+        question q,
+        user_information u
+        WHERE
+        q.user_id = u.user_id
+        AND
+        q.question_content LIKE concat('%',#{key},'%')
+        ORDER BY
+        q.send_time DESC
+    </select>
+
+
+</mapper>

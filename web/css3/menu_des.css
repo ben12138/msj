@@ -1,0 +1,255 @@
+a{
+    text-decoration: none;
+    color: #454545;
+}
+ul{
+    list-style: none;
+}
+.menu-nav{
+    width: 100%;
+    height: 40px;
+    background: #f2f2f2;
+}
+.menu-nav ul{
+    width: 70%;
+    height: 40px;
+    margin: 10px auto;
+}
+.menu-nav ul li{
+    float: left;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 40px;
+    color: darkslategray;
+    cursor: pointer;
+}
+.menu-nav ul li:hover{
+    background: slategray;
+    color: white;
+}
+.menu-content{
+    width:100%;
+    height:936px;
+    padding-bottom: 20px;
+    display: flex;
+    background: white;
+}
+.menu-content .left{
+    flex: 4;
+    margin-left: 15%;
+}
+.menu-content .right{
+    flex: 2;
+}
+.recipe-exp{
+    width: 640px;
+    height: 216px;
+    margin: 20px auto;
+    border:1px solid #eae6e3 ;
+}
+.swiper-container{
+    float: left;
+    width: 288px;
+    height: 236px;
+}
+.swiper-wrapper{
+    width: 288px;
+    height: 216px;
+}
+.re{
+    float: left;
+    width: 342px;
+    height: 200px;
+}
+.re-up{
+    padding-left: 20px;
+}
+.re-up h5{
+    font-size: 18px;
+    font-weight: normal;
+    margin:20px 0 10px 0;
+}
+.re-up p{
+    margin: 0;
+}
+.re-up .score{
+    color: #ff7501;
+    font-size: 16px;
+}
+.re-up .number{
+    margin-top: 25px;
+    color: #a69f96;
+    font-size: 14px;
+}
+.score{
+    margin-top: 15px;
+}
+.score img{
+    width: 20px;
+}
+.re-down{
+    width: 334px;
+    height: 45px;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #eae6e3;
+}
+.re-down img{
+    float: left;
+    margin: 4px 5px 0 0 ;
+}
+.re-down img:nth-child(3),
+.re-down img:nth-child(5){
+    display: inline-block;
+    float: left;
+    width: 20px;
+    margin: 5px 2px 0 50px;
+    cursor: pointer;
+}
+.re-down img:nth-child(5){
+    margin: 6px 2px 0 30px;
+}
+.re-down a:nth-child(4),
+.re-down a:nth-child(6){
+    float: left;
+    display: inline-block;
+    margin: 4px 0 0 5px;
+    cursor: pointer;
+}
+.re-down span{
+   display: block;
+    float: left;
+    line-height: 30px;
+}
+.re-des{
+    width: 620px;
+    height: 670px;
+    margin-left:.5%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    background: white;
+    border: 1px solid #eae6e3;
+}
+.re-des dt{
+    width: 70px;
+    height: 25px;
+    float: left;
+    color: #a69f96;
+}
+.re-des dd{
+    float: left;
+    width: 490px;
+    height: 85px;
+    margin-left: 20px;
+}
+.re-des dd:nth-child(6) p:first-child{
+    margin-top: 0;
+}
+.re-des dd:nth-child(4){
+    height: 40px;
+}
+.re-des dd:nth-child(6){
+    height: 490px;
+}
+.re-des dd:last-child{
+    height: 25px;
+}
+.re-des dd:last-child span{
+    color:#fa7e3e;
+}
+.menu-content .right{
+    margin-top: 20px;
+    margin-right: 180px;
+}
+.knowledge{
+    width: 250px;
+    height: 254px;
+    margin-bottom: 20px;
+    padding: 17px 18px 17px 17px;
+    border:1px solid #eae6e3 ;
+}
+.knowledge ul{
+    padding-left: 20px;
+}
+.knowledge ul li{
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.knowledge ul li:hover{
+    color: #ff7501;
+}
+.knowledge p{
+    color: #a69f96;
+}
+.comment{
+    width: 100%;
+    padding-left:205px;
+    height: 1200px;
+    background: #fff;
+}
+.comment .item{
+    height: 130px;
+    margin-bottom: 10px;
+}
+.comment h3{
+    margin: 0 0 10px 0;
+    color: #c0ae7d;
+    font-size: 24px;
+    font-weight: 700;
+}
+.comment .favor,
+.jubao{
+    float: right;
+    margin: 10px 20px 0 0;
+}
+.comment .favor img,
+.reply-item img{
+    width: 20px;
+}
+.com-item{
+    width: 100%;
+    height: 57px;
+    margin-top: 20px;
+}
+.com-item .left{
+    float: left;
+}
+.com-item .left img{
+    width: 40px;
+    margin-top: 6px;
+    border-radius: 50%;
+}
+.com-item .right{
+    float: left;
+    margin-left: 15px;
+}
+.com-item .right a{
+    color: #dd3915;
+    font-size: 14px;
+}
+.com-item .right span{
+    font-size: 14px;
+    color: #909090;
+}
+.com-item .right p{
+    margin: 10px 0 0 0 ;
+    font-size: 14px;
+}
+.reply-item{
+    font-size: 14px;
+    margin-left: 55px;
+    margin-top: 15px;
+}
+.reply-item p,
+.reply-item span{
+    color: #6d8978;
+}
+.reply-item  .left{
+    float: left;
+}
+.jubao{
+    margin: 0 20px 0 0;
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美食家</title>
+    <link rel="stylesheet" type="text/css" href="css3/index.css">
+    <script src="jQuery/jquery-1.8.3.min.js"></script>
+    <script src="jQuery/unslider.min.js"></script>
+    <script src="js/index.js"></script>
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            border: 2px solid #4d92d9;
+            background-color: rgb(254, 248, 240);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #4d92d9;
+            transition: 0.4s;
+        }
+
+        .text-desc {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgb(254, 248, 240);
+            height: 100%;
+            opacity: 0;
+            width: 90%;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .port-2 {
+            width: 23%;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            perspective: 800px;
+            background-color: rgb(254, 248, 240);
+            height: 100%;
+            float: left;
+            padding: 1%;
+        }
+
+        .port-2 .text-desc {
+            z-index: -1;
+            transition: 0.6s;
+            padding-top: 20px;
+            background-color: rgb(254, 248, 240);
+        }
+
+        .port-2 .image-box {
+            transition: 0.4s;
+            padding-top: 20px;
+            height: 100%;
+            background-color: rgb(254, 248, 240);
+        }
+
+        .port-2 .image-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .port-2:hover .image-box {
+            transform: rotateX(80deg);
+            transform-origin: center bottom 0;
+            transition: 0.4s;
+            height: 100%;
+        }
+
+        .port-2:hover .image-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .port-2 .text-desc {
+            opacity: 1;
+            top: -100%;
+        }
+
+        .port-2:hover .text-desc {
+            top: 0;
+        }
+
+        p {
+            max-height: 40px;
+            overflow: hidden;
+            text-overflow: clip;
+        }
+    </style>
+</head>
+<body id="indexbody">
+<div id="backhidden"></div>
+<div class="header" id="top">
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.png"></a>
+    </div>
+    <div class="search">
+        <form>
+            <input id="searchinput" class="searchinput" type="text" placeholder="搜你想要"/>
+            <input type="button" class="searchbutton">
+        </form>
+    </div>
+    <div class="login">
+        <a href="#" id="login">登录</a>&nbsp;&nbsp;
+        <a href="#" id="register">注册</a>
+        <img id="headimage" src="images/default_personal_image.png" class="headimage"/>
+        <a href="#" id="exit" style="visibility: hidden">退出登录</a>
+    </div>
+</div>
+<div id="logindiv">
+</div>
+<div id="registerdiv">
+</div>
+<div class="middle">
+    <div class="banner" id="b03">
+        <ul>
+            <li><img src="images/banner.jpg"></li>
+            <li><img src="images/banner2.jpg"></li>
+            <li><img src="images/banner3.jpg"></li>
+        </ul>
+        <a href="javascript:void(0);" class="unslider-arrow prev"><img id="preimg" src="images/left_arrow_normal.png"/></a>
+        <a href="javascript:void(0);" class="unslider-arrow next"><img id="nextimg"
+                                                                       src="images/right_arrow_normal.png"/></a>
+    </div>
+
+    <div class="popularmenu">
+        <h1>我们的种类</h1>
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    九大菜系：
+                </td>
+                <td>
+                    <a href="#">鲁菜</a>
+                    <a href="#">浙菜</a>
+                    <a href="#">川菜</a>
+                    <a href="#">粤菜</a>
+                    <a href="#">苏菜</a>
+                    <a href="#">闽菜</a>
+                    <a href="#">湘菜</a>
+                    <a href="#">徽菜</a>
+                    <a href="#">家常菜</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    不同菜式：
+                </td>
+                <td>
+                    <a href="#">凉菜</a>
+                    <a href="#">热菜</a>
+                    <a href="#">甜品</a>
+                    <a href="#">汤</a>
+                    <a href="#">主食</a>
+                    <a href="#">自制</a>
+                    <a href="#">饮品</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    原料辅食：
+                </td>
+                <td>
+                    <a href="#">水果</a>
+                    <a href="#">蛋类</a>
+                    <a href="#">肉类</a>
+                    <a href="#">奶类</a>
+                    <a href="#">腌肉腌菜</a>
+                    <a href="#">粮油干果</a>
+                    <a href="#">调为辅料</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="popularmenu">
+        <a style="color: black" href="menu_list.html"><h1 style="margin: 0;">优秀菜谱</h1></a>
+        <hr>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist1.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist2.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist3.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist4.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+    </div>
+    <div class="popularmenu">
+        <h1 style="padding-top: 25%;">优秀作品</h1>
+        <hr>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist1.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist2.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist3.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist4.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+    </div>
+    <div class="popularmenu" style="padding-bottom: 25%;">
+        <h1 style="padding-top: 25%;">优秀课程</h1>
+        <hr>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist1.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist2.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist3.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="port-2">
+            <div class="image-box">
+                <img src="images/foodlist4.jpg" alt="Image-2">
+            </div>
+            <div class="text-desc">
+                <h3>美味的食物，山顶洞人的美食</h3>
+                <p>这道美食是我偶然间做出来的.</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p class="totop" style="padding-top: 10px;">回到页顶</p>
+    <hr>
+    <p>电话:13151567657 邮箱:m13814545863@163.com 地址:江苏省南京市江宁区弘景大道99号金陵科技学院</p>
+    <p style="padding-bottom: 10px;">贲睿 1412102036</p>
+</div>
+<div class="totop" id="totop">
+</div>
+</body>
+</html>

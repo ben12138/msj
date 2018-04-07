@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.ProductionDao">
+    <resultMap id="production" type="com.jlkj.msj.entity.Production">
+        <id column="id" property="id"/>
+        <result column="production_id" property="productionId"/>
+        <result column="production_description" property="productionDescription"/>
+        <result column="production_pic" property="productionPic"/>
+        <result column="praise_id" property="praise"/>
+        <result column="send_time" property="sendTime"/>
+        <association property="userInformation" javaType="com.jlkj.msj.entity.UserInformation"
+        column="user_id" select="com.jlkj.msj.dao.UserInformationDao.getUserInf">
+        </association>
+    </resultMap>
+    <insert id="addProduction" parameterType="production">
+        INSERT INTO production (
+          production_id,
+          user_id,
+          production_description,
+          production_pic,
+          praise_id,
+          send_time
+        ) VALUES (
+          #{production.productionId},
+          #{userId},
+          #{production.productionDescription},
+          #{production.productionPic},
+          #{production.praise},
+          #{production.sendTime}
+        )
+    </insert>
+    <select id="getProduction" resultType="production">
+        SELECT
+          production_id,
+          user_id,
+          production_description,
+          production_pic,
+          praise_id,
+          send_time
+          FROM
+          production
+          WHERE
+          production_id = #{productionId}
+    </select>
+    <select id="getProductions" resultMap="production">
+        SELECT
+          production_id,
+          user_id,
+          production_description,
+          production_pic,
+          praise_id praise,
+          send_time
+          FROM
+          production
+    </select>
+    <select id="getMyProductions" resultMap="production">
+        SELECT
+          production_id,
+          user_id,
+          production_description,
+          production_pic,
+          praise_id praise,
+          send_time
+          FROM
+          production
+          WHERE
+          user_id = #{userId}
+    </select>
+    <delete id="deleteProduction" parameterType="String">
+        DELETE FROM production WHERE production_id = #{productionId}
+    </delete>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.PraiseDao">
+    <resultMap id="praise" type="com.jlkj.msj.entity.Praise">
+        <id column="id" property="id"/>
+        <result column="praise_id" property="praiseId"/>
+        <result column="user_id" property="userId"/>
+        <result column="content_id" property="contentId"/>
+        <result column="type" property="type"/>
+    </resultMap>
+    <insert id="addPraise" parameterType="praise">
+        INSERT INTO
+            praise(
+            praise_id,
+            user_id,
+            content_id,
+            type)
+        values(
+            #{praise.praiseId},
+            #{praise.userId},
+            #{praise.contentId},
+            #{praise.type})
+    </insert>
+    <delete id="deletePraise" parameterType="praise">
+        DELETE FROM praise WHERE praise_id = #{praise.praiseId}
+    </delete>
+    <select id="getPraises" resultMap="praise">
+        SELECT
+            praise_id,
+            user_id,
+            content_id,
+            type
+        FROM
+            praise
+         WHERE
+            content_id = #{contentId}
+            AND
+            type = #{type}
+    </select>
+</mapper>

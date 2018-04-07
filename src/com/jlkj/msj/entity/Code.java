@@ -1,0 +1,49 @@
+package com.jlkj.msj.entity;
+
+public class  Code {
+    public static final int SUCCESS = 200;//成功返回码
+    public static final int USERNAME_ERROR = 201;//用户名错误
+    public static final int PASSWORD_ERROR = 202;//密码错误
+    public static final int USERNAME_EXIST = 203;//用户名已存在
+    public static final int PHONENUM_EXIST = 204;//电话号码已被使用过
+    public static final int GET_USERFORMATION_ERROR = 205;//获取用户信息失败
+    public static final int VERIFICATION_ERROR = 206;//验证码错误
+    public static final int SEND_VERTIFICATION_ERROR = 207;//发送验证码失败
+    public static final int ADD_USER_ERROR = 208;//添加用户失败
+    public static final int UPDATE_USERINFORMATION_ERROR = 209;//更新用户信息失败
+    public static final int UPLOAD_HEADIMAGE_ERROR = 210;//上传头像失败
+    public static final int UPDATE_MENU_ERROR = 211;//更新菜谱失败
+    public static final int DELETE_MENU_ERROR = 212;//删除菜谱失败
+    public static final int ADD_MENU_ERROR = 213;//添加菜谱失败
+    public static final int GET_MENU_INF_ERROR = 214;//获取单个菜谱详细信息失败
+    public static final int PRAISE_ERROR = 215;//点赞失败
+    public static final int CANCEL_PRAISE_ERROR = 216;//取消点赞失败
+    public static final int DEGREE_ERROR = 217;//评分失败
+    public static final int GET_DEGREE_ERROR = 218;//获取评分信息失败
+    public static final int ADD_COMMENT_ERROR = 219;//添加评论失败
+    public static final int DELETE_COMMENT_ERROR = 220;//删除评论失败
+    public static final int GET_COMMENT_ERROR = 221;//获取评论失败
+    public static final int ADD_PRODUCTION_ERROR = 222;//发表作品失败
+    public static final int DELETE_PRODUCTION_ERROR = 223;//删除作品失败
+    public static final int GET_PRODUCTION_ERROR = 224;//获取作品失败
+    public static final int GET_LIVESHOW_ERROR = 225;//获取直播信息失败
+    public static final int GET_COURSE_ERROR = 226;//获取课程分享失败
+    public static final int UPDATE_COURSE_ERROR = 227;//更新课程分享信息失败
+    public static final int DELETE_COURSE_ERROR = 228;//删除课程信息失败
+    public static final int ADD_COURSE_ERROR = 229;//发布课程失败
+    public static final int DELETE_QUESTION_ERROR = 230;//删除问题失败
+    public static final int ADD_QUESTION_ERROR = 231;//发布问题失败
+    public static final int GET_QUESTION_ERROR = 232;//获得问题失败
+    public static final int ADD_ANSWER_ERROR = 233;//发布回答失败
+    public static final int DELETE_ANSWER_ERROR = 234;//删除回答失败
+    public static final int GET_ANSWER_ERROR = 235;//获取回答失败
+    public static final int ADD_COLLECTION_ERROR = 236;//添加收藏失败
+    public static final int DELETE_COLLECTION_ERROR = 237;//删除收藏失败
+    public static final int GET_COLLECTION_ERROR = 238;//获取收藏失败
+    public static final int IS_COLLECTED = 239;//未收藏
+    public static final int GET_CHECK_ERROR = 240;//获取举报信息失败
+    public static final int UPDATE_CHECK_ERROR = 241;//更新举报信息失败
+    public static final int ADD_CHECK_ERROR = 242;//发布举报信息失败
+    public static final int GET_COURSE_VIDEO_ERROR = 243;//获取课程视频失败
+    public static final int UPDATE_USER_ERROR = 244;
+}

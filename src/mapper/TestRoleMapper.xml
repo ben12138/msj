@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.TestRoleDao">
+	<!-- 使用多表查询，将查询到的结果封装到相应的实体类的嵌套中去，resultmap表示返回数据类型和中间的类型的引用 -->
+	<resultMap type="com.jlkj.msj.entity.TestRole" id="testMapper">
+		<id column="id" property="id"></id>
+		<!-- TestRole中的role和对应的关系 -->
+		<association property="role" javaType="com.jlkj.msj.entity.Role">
+			<id property="id" column="id"/>
+            <result property="roleName" column="role_name"/>
+            <result property="note" column="note"/>
+		 </association>
+	</resultMap>
+	<!-- 执行查询语句 -->
+	<select id="getAll" resultMap="testMapper">
+		select r.id,r.role_name,r.note,t.id,t.rid from n_name r,test t where r.id=t.rid
+	</select>
+</mapper>

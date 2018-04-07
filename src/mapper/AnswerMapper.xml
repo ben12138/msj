@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.AnswerDao">
+    <resultMap id="answer" type="com.jlkj.msj.entity.Answer">
+        <id column="id" property="id"/>
+        <result column="answer_id" property="answerId"/>
+        <result column="question_id" property="questionId"/>
+        <result column="answer" property="answer"/>
+        <result column="send_time" property="sendTime"/>
+        <association property="userInformation" column="user_id"
+        select="com.jlkj.msj.dao.UserInformationDao.getUserInf">
+        </association>
+    </resultMap>
+    <insert id="addAnswer">
+        INSERT INTO answer(
+          answer_id,
+          user_id,
+          question_id,
+          answer,
+          send_time
+        )VALUES (
+          #{answer.answerId},
+          #{userId},
+          #{answer.questionId},
+          #{answer.answer},
+          #{answer.sendTime}
+        )
+    </insert>
+    <select id="getAnswers" resultMap="answer">
+        SELECT
+        u.user_id user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        a.answer_id answer_id,
+        a.question_id question_id,
+        a.answer answer,
+        a.send_time send_time
+        FROM
+        answer a,
+        user_information u
+        WHERE
+        a.user_id = u.user_id
+        AND a.question_id = #{answer.questionId}
+        ORDER BY
+        a.send_time DESC
+    </select>
+    <delete id="deleteAnswer" parameterType="String">
+        DELETE FROM answer WHERE answer_id = #{answerId}
+    </delete>
+</mapper>

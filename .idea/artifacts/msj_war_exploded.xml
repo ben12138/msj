@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="msj:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/msj_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="msj" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mail" />
+          <element id="library" level="project" name="pagehelper" />
+          <element id="library" level="project" name="sendMessage" />
+          <element id="library" level="project" name="json" />
+          <element id="library" level="project" name="json (2)" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="msj/web/Web" />
+    </root>
+  </artifact>
+</component>

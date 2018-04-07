@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.MenuDao">
+    <resultMap id="menu" type="com.jlkj.msj.entity.Menu">
+        <id column="mid" property="id"/>
+        <result column="menu_id" property="menuId"/>
+        <result column="title" property="title"/>
+        <result column="cover" property="cover"/>
+        <result column="story" property="story"/>
+        <result column="food" property="food"/>
+        <result column="categroy_id" property="strCategroyId"/>
+        <result column="step" property="step"/>
+        <result column="send_time" property="sendTime" javaType="java.sql.Date"></result>
+        <association property="degree" javaType="com.jlkj.msj.entity.Degree"
+            column="d_id" select="com.jlkj.msj.dao.DegreeDao.getDegree">
+        </association>
+        <association property="userInformation" javaType="com.jlkj.msj.entity.UserInformation"
+            column="user_id" select="com.jlkj.msj.dao.UserInformationDao.getUserInf">
+        </association>
+    </resultMap>
+
+    <select id="getUnListedMenus" resultMap="menu">
+        SELECT
+            m.id mid,
+            m.menu_id menu_id,
+            m.user_id user_id,
+            m.title title,
+            m.cover cover,
+            m.story story,
+            m.food food,
+            m.categroy_id categroy_id,
+            m.step step,
+            m.degree_id degree_id,
+            m.send_time send_time,
+            u.nickname nickname,
+            u.sex sex,
+            u.headimage headimage,
+            u.email email,
+            u.phone_num phone_num,
+            u.birthday birthday,
+            u.company company,
+            u.introduction introduction,
+            u.state state,
+            u.authority_id authority_id,
+            d.id did,
+            d.degree_id d_id,
+            d.degree_num degree_num,
+            d.degree degree
+        FROM
+            menu m ,
+            user_information u ,
+            degree d
+        WHERE
+            m.user_id = u.user_id
+        AND
+            m.degree_id = d.degree_id
+        ORDER BY
+            d.degree DESC;
+    </select>
+    <select id="getMyMenus" resultMap="menu">
+        SELECT
+        m.id mid,
+        m.menu_id menu_id,
+        m.user_id user_id,
+        m.title title,
+        m.cover cover,
+        m.story story,
+        m.food food,
+        m.categroy_id categroy_id,
+        m.step step,
+        m.degree_id degree_id,
+        m.send_time send_time,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.id did,
+        d.degree_id d_id,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        menu m ,
+        user_information u ,
+        degree d
+        WHERE
+        m.user_id = #{userId}
+        AND
+        m.user_id = u.user_id
+        AND
+        m.degree_id = d.degree_id
+        ORDER BY
+        d.degree DESC;
+    </select>
+
+    <select id="getCategoryMenus" resultMap="menu">
+        SELECT
+        m.id mid,
+        m.menu_id menu_id,
+        m.user_id user_id,
+        m.title title,
+        m.cover cover,
+        m.story story,
+        m.food food,
+        m.categroy_id categroy_id,
+        m.step step,
+        m.degree_id degree_id,
+        m.send_time send_time,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.id did,
+        d.degree_id d_id,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        menu m ,
+        user_information u ,
+        degree d
+        WHERE
+        m.user_id = u.user_id
+        AND
+        m.degree_id = d.degree_id
+        
+        <if test="categroy1 != 0">
+            AND m.categroy_id LIKE concat(#{categroy1},'%')
+        </if>
+        <if test="categroy2 != 0">
+            AND m.categroy_id LIKE concat('%',#{categroy2},'%')
+        </if>
+        <if test="categroy3 != 0">
+            AND m.categroy_id LIKE concat('%',#{categroy3})
+        </if>
+      
+        ORDER BY
+        d.degree DESC;
+    </select>
+
+    <select id="getMenusByKeyWord" resultMap="menu">
+        SELECT
+        m.id mid,
+        m.menu_id menu_id,
+        m.user_id user_id,
+        m.title title,
+        m.cover cover,
+        m.story story,
+        m.food food,
+        m.categroy_id categroy_id,
+        m.step step,
+        m.degree_id degree_id,
+        m.send_time send_time,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.id did,
+        d.degree_id d_id,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        menu m ,
+        user_information u ,
+        degree d
+        WHERE
+        m.food LIKE concat('%',#{key},'%')
+        OR m.title LIKE concat('%',#{key},'%')
+        AND
+        m.user_id = u.user_id
+        AND
+        m.degree_id = d.degree_id
+        ORDER BY
+        d.degree DESC;
+    </select>
+
+    <update id="updateMenu" parameterType="menu">
+        UPDATE
+          menu
+          SET
+            title = #{menu.title,jdbcType=VARCHAR},
+            cover = #{menu.cover,jdbcType=VARCHAR},
+            story = #{menu.story,jdbcType=VARCHAR},
+            categroy_id = #{menu.strCategroyId,jdbcType=VARCHAR},
+            step = #{menu.step,jdbcType=VARCHAR},
+            send_time = #{menu.sendTime}
+        where
+          menu_id = #{menu.menuId,jdbcType=VARCHAR};
+    </update>
+    <delete id="deleteMenu" parameterType="String">
+        DELETE FROM menu WHERE menu_id = #{menuId};
+    </delete>
+    <insert id="addMenu" parameterType="menu">
+        INSERT INTO
+            menu(
+            menu_id,
+            user_id,
+            title,
+            cover,
+            story,
+            categroy_id,
+            step,
+            degree_id,
+            praise_id,
+            send_time)
+        VALUES (
+            #{menu.menuId},
+            #{menu.userInformation.userId},
+            #{menu.title},
+            #{menu.cover},
+            #{menu.story},
+            #{menu.strCategroyId},
+            #{menu.step},
+            #{menu.degree.degreeId},
+            #{menu.praise},
+            #{menu.sendTime});
+    </insert>
+    <select id="getMenuInf" parameterType="String" resultMap="menu">
+        SELECT
+            m.id mid,
+            m.menu_id menu_id,
+            m.user_id user_id,
+            m.title title,
+            m.cover cover,
+            m.story story,
+            m.food food,
+            m.categroy_id categroy_id,
+            m.step step,
+            m.degree_id degree_id,
+            m.send_time send_time,
+            u.nickname nickname,
+            u.sex sex,
+            u.headimage headimage,
+            u.email email,
+            u.phone_num phone_num,
+            u.birthday birthday,
+            u.company company,
+            u.introduction introduction,
+            u.state state,
+            u.authority_id authority_id,
+            d.id did,
+            d.degree_id d_id,
+            d.degree_num degree_num,
+            d.degree degree
+        FROM
+            menu m ,
+            user_information u ,
+            degree d
+        WHERE
+            m.user_id = u.user_id
+        AND
+            m.degree_id = d.degree_id
+        AND
+            m.menu_id = #{menuId}
+    </select>
+</mapper>

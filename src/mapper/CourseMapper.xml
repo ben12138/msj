@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.CourseDao">
+    <resultMap id="course" type="com.jlkj.msj.entity.Course">
+        <id column="id" property="id"/>
+        <result column="course_id" property="courseId"/>
+        <result column="course_name" property="courseName"/>
+        <result column="course_introduction" property="introduction"/>
+        <result column="course_pic" property="coursePic"/>
+        <result column="cstate" property="state"/>
+        <association property="degree" javaType="com.jlkj.msj.entity.Degree"
+            column="d_id" select="com.jlkj.msj.dao.DegreeDao.getDegree">
+        </association>
+        <association property="userInformation" javaType="com.jlkj.msj.entity.UserInformation"
+            column="user_id" select="com.jlkj.msj.dao.UserInformationDao.getUserInf">
+        </association>
+    </resultMap>
+
+    <select id="getCourses" resultMap="course">
+        SELECT
+        c.id,
+        c.course_id,
+        c.course_name,
+        c.introduction course_introduction,
+        c.course_pic,
+        c.state cstate,
+        c.degree_id d_id,
+        c.user_id user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        course c,
+        user_information u ,
+        degree d
+        WHERE
+        c.user_id = u.user_id
+        AND
+        c.degree_id = d.degree_id
+        ORDER BY
+        d.degree DESC;
+    </select>
+
+    <select id="getMyCourse" resultMap="course">
+        SELECT
+        c.id,
+        c.course_id,
+        c.course_name,
+        c.introduction course_introduction,
+        c.course_pic,
+        c.state cstate,
+        c.degree_id d_id,
+        c.user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        course c,
+        user_information u ,
+        degree d
+        WHERE
+        c.user_id = u.user_id
+        AND
+        u.user_id = #{userId}
+        AND
+        c.degree_id = d.degree_id
+        ORDER BY
+        d.degree DESC;
+    </select>
+
+
+    <select id="getCourse" resultMap="course">
+        SELECT
+        c.id,
+        c.course_id,
+        c.course_name,
+        c.introduction course_introduction,
+        c.course_pic,
+        c.state cstate,
+        c.degree_id d_id,
+        c.user_id,
+        u.nickname nickname,
+        u.sex sex,
+        u.headimage headimage,
+        u.email email,
+        u.phone_num phone_num,
+        u.birthday birthday,
+        u.company company,
+        u.introduction introduction,
+        u.state state,
+        u.authority_id authority_id,
+        d.id did,
+        d.degree_num degree_num,
+        d.degree degree
+        FROM
+        course c,
+        user_information u ,
+        degree d
+        WHERE
+        c.user_id = u.user_id
+        AND
+        c.degree_id = d.degree_id
+        AND
+        c.course_id = #{courseId}
+    </select>
+
+    <insert id="addCourse" parameterType="course">
+        INSERT INTO course(
+          user_id,
+          course_id,
+          course_name,
+          introduction,
+          degree_id,
+          course_pic,
+          state
+        ) VALUES (
+          #{userId},
+          #{course.courseId},
+          #{course.courseName},
+          #{course.introduction},
+          #{degreeId},
+          #{course.coursePic},
+          #{course.state}
+        )
+    </insert>
+
+    <delete id="deleteCourse" parameterType="String">
+        DELETE FROM course WHERE course_id = #{courseId}
+    </delete>
+
+    <update id="updateCourse" parameterType="course">
+        UPDATE course
+        SET
+        course_name = #{course.courseName},
+        introduction = #{course.introduction},
+        course_pic = #{course.coursePic},
+        state = #{course.state}
+        WHERE course_id = #{course.courseId}
+    </update>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlkj.msj.dao.UserInformationDao">
+
+    <resultMap id="userInformation" type="com.jlkj.msj.entity.UserInformation">
+        <id column="user_id" property="id"></id>
+        <result column="nickname" property="nickName"></result>
+        <result column="sex" property="sex"></result>
+        <result column="headimage" property="headImage"></result>
+        <result column="phone_num" property="phoneNum"></result>
+        <result column="email" property="email"></result>
+        <result column="birthday" property="birthday" javaType="java.sql.Date"></result>
+        <result column="company" property="company"></result>
+        <result column="introduction" property="introduction"></result>
+        <result column="state" property="state"></result>
+        <result column="authority_id" property="authorityId"></result>
+    </resultMap>
+
+    <!-- 为dao编写sql语句 -->
+    <select id="getUserInf" resultType="userInformation" parameterType="String">
+        SELECT
+            user_id,
+            nickname,
+            sex,
+            headimage,
+            phone_num,
+            email,
+            birthday,
+            company,
+            introduction,
+            state,
+            authority_id
+        FROM
+          user_information
+        WHERE
+          user_id=#{userId}
+    </select>
+
+    <update id="updateUserInformation" parameterType="userInformation">
+        UPDATE
+          user_information
+        SET
+            nickname=#{userInformation.nickName},
+            sex=#{userInformation.sex},
+            headimage=#{userInformation.headImage},
+            phone_num=#{userInformation.phoneNum},
+            email=#{userInformation.email},
+            birthday=#{userInformation.birthday},
+            company=#{userInformation.company},
+            introduction=#{userInformation.introduction},
+            state=#{userInformation.state},
+            authority_id=#{userInformation.authorityId}
+        WHERE
+            user_id=#{userInformation.userId}
+    </update>
+
+</mapper>
